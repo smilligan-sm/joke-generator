@@ -1,0 +1,44 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+}
+.container {
+  width: 800px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+}
+.container .heading {
+
+  border-radius: 10px;
+}
+h1 {
+  font-family: 'Star Wars', sans-serif;
+  text-align: center;
+  font-size: 75px;
+  margin: 0%;
+}
+h2 {
+  font-family: "Bakbak One", sans-serif;
+  text-align: center;
+  font-size: 44px;
+    margin: 0%;
+}
+.joke-button {
+  font-size: 24px;
+  font-weight: 350;
+  border-radius: 8px;
+  padding: 10px;
+  display: block; 
+  margin: 20px auto; 
+}
+.joke-button:hover {
+  background-color: rgb(192, 79, 183);
+  color: white;
+}
+.joke {
+  padding: 50px;
+}
