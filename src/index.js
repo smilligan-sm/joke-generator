@@ -1,5 +1,5 @@
 let jokeTimeout;
-const droidBeep = new Audio("/sounds/droid-beep.mp3");
+const droidBeep = new Audio("./src/sounds/droid-beep.mp3");
 
 function showLoader() {
   document.querySelector("#lightsaber-loader").style.display = "flex";
@@ -32,7 +32,9 @@ function handleTimeout() {
 
 function playDroidBeep() {
   droidBeep.currentTime = 0;
-  droidBeep.play();
+  droidBeep.play().catch((error) => {
+    console.error("Beep playback failed:", error);
+  });
 }
 
 function displayJoke(response) {
