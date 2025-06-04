@@ -1,5 +1,5 @@
 let jokeTimeout;
-const droidBeep = new Audio("./src/sounds/droid-beep.mp3");
+const droidBeep = new Audio("/sounds/droid-beep.mp3");
 
 function showLoader() {
   document.querySelector("#lightsaber-loader").style.display = "flex";
