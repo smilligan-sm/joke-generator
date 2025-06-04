@@ -1,5 +1,7 @@
+// Fix path and format compatibility for droid beep sound
+const droidBeep = new Audio("./src/sounds/droid-beep.mp3");
+
 let jokeTimeout;
-const droidBeep = new Audio("public/sounds/droid-beep.mp3");
 
 function showLoader() {
   document.querySelector("#lightsaber-loader").style.display = "flex";
@@ -14,6 +16,8 @@ function resetUI() {
   document.querySelector(".custom-joke").style.display = "none";
   document.querySelector("#joke-button").style.display = "none";
   document.querySelector("#another-joke").style.display = "none";
+  document.querySelector("#joke").innerHTML = "";
+  document.querySelector("#start-again").style.display = "none";
   hideLoader();
 }
 
@@ -55,13 +59,14 @@ function displayJoke(response) {
 
 function generateJoke(event) {
   if (event) event.preventDefault();
-  let apiKey = "24f16ff06b6aba2369ec3846f0t8bco2";
-  let context =
-    "You are a funny AI assistant, and you love the movie and tv franchise about the Star Wars universe. Keep your response random as we don't want to hear the same joke everytime.";
-  let prompt = "tell me a joke or pun to do with Star Wars";
-  let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
-  let jokeElement = document.querySelector("#joke");
+  const apiKey = "24f16ff06b6aba2369ec3846f0t8bco2";
+  const context =
+    "You are a funny AI assistant, and you love the movie and tv franchise about the Star Wars universe. Keep your response random as we don't want to hear the same joke everytime.";
+  const prompt = "tell me a joke or pun to do with Star Wars";
+  const apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
+
+  const jokeElement = document.querySelector("#joke");
   jokeElement.textContent = "Generating a joke guaranteed to make you smile, please wait 😁";
   showLoader();
   jokeTimeout = setTimeout(handleTimeout, 20000);
@@ -73,16 +78,16 @@ function generateJoke(event) {
 
 function generateCustomJoke(event) {
   event.preventDefault();
-  let userInput = document.querySelector("#user-instructions").value.trim();
+  const userInput = document.querySelector("#user-instructions").value.trim();
   if (!userInput) return;
 
-  let apiKey = "24f16ff06b6aba2369ec3846f0t8bco2";
-  let context =
+  const apiKey = "24f16ff06b6aba2369ec3846f0t8bco2";
+  const context =
     "You are a funny AI assistant with deep knowledge of the Star Wars universe. Generate original jokes, puns, or clever humor tailored to the theme provided by the user.";
-  let prompt = `Tell me a Star Wars-themed joke about: ${userInput}`;
-  let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
+  const prompt = `Tell me a Star Wars-themed joke about: ${userInput}`;
+  const apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(prompt)}&context=${encodeURIComponent(context)}&key=${apiKey}`;
 
-  let jokeElement = document.querySelector("#joke");
+  const jokeElement = document.querySelector("#joke");
   jokeElement.textContent = "Summoning your custom joke... ⚡";
   showLoader();
   jokeTimeout = setTimeout(handleTimeout, 20000);
@@ -96,7 +101,9 @@ function generateCustomJoke(event) {
 
 function handleInitialSelection(choice) {
   document.querySelector("#selection-options").style.display = "none";
-  if (choice === 'random') {
+  document.querySelector("#start-again").style.display = "block";
+
+  if (choice === "random") {
     document.querySelector("#joke-button").style.display = "block";
   } else {
     document.querySelector(".custom-joke").style.display = "block";
@@ -106,5 +113,6 @@ function handleInitialSelection(choice) {
 document.querySelector("#form-generator").addEventListener("submit", generateCustomJoke);
 document.querySelector("#joke-button").addEventListener("click", generateJoke);
 document.querySelector("#another-joke").addEventListener("click", prepareForNewJoke);
+document.querySelector("#start-again").addEventListener("click", resetUI);
 
 resetUI();
