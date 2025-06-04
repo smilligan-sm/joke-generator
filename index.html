@@ -8,37 +8,48 @@
     <link href="src/styles.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
   </head>
 
-  <body>
-    <div class="container">
-        <div class="heading">
-            <h1>Star Wars</h1>
-            <h2>Joke Generator</h2>
-            <button class="joke-button" id="joke-button">Tell me a random joke</button>
-        </div>
-        <div class="content">
-        <div class="joke" id="joke">
-            <div id="spinner" class="spinner hidden"></div>
-        </div>
-        <div class="custom-joke">
-            <form class="topic-form" id="form-generator">
-            <input
-              type="text"
-              placeholder="Enter a theme, scene, character or concept"
-              class="topic-selector"
-              id="user-instructions"
-              autofocus
-              required
-              autocomplete="off"
-            />
-            <input type="submit" class="topic-submit" />
-          </form>
-          <div class="hint">i.e. dark humour about Chewbucca, silly pun, Han Solo and the Millennium Falcon</div>  
-        </div>
-    <script src="src/index.js"></script>
+<body>
+  <div class="container">
+    <div class="heading">
+      <h1>Star Wars</h1>
+      <h2>Joke Generator</h2>
     </div>
-  </body>
+
+    <div id="selection-options" class="selection-options">
+      <button onclick="handleInitialSelection('random')" class="joke-button">Random Joke</button>
+      <button onclick="handleInitialSelection('custom')" class="joke-button">Custom Joke</button>
+    </div>
+
+    <button class="joke-button" id="joke-button">Tell me a random joke</button>
+
+    <div class="custom-joke">
+      <form class="topic-form" id="form-generator">
+        <input
+          type="text"
+          placeholder="Enter a theme, scene, character or concept"
+          class="topic-selector"
+          id="user-instructions"
+          required
+        />
+        <input type="submit" class="topic-submit" value="Submit" />
+      </form>
+      <div class="hint">i.e. dark humour about Chewbacca, silly pun, Han Solo and the Millennium Falcon</div>
+    </div>
+
+    <div class="joke" id="joke"></div>
+      <div id="lightsaber-loader">
+    <div class="lightsaber"></div>
+    </div>
+
+
+    <button class="joke-button" id="another-joke">Want another joke?</button>
+
+    <script src="src/index.js"></script>
+  </div>
+</body>
+
 </html>

@@ -1,7 +1,9 @@
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Share Tech Mono", monospace;
   font-size: 18px;
   font-weight: 300;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png'), #000;
+  background-size: cover;
 }
 .container {
   width: 800px;
@@ -17,17 +19,20 @@ body {
 }
 h1 {
   font-family: 'Star Wars', sans-serif;
+  color: #FFE81F; /* Star Wars yellow */
   text-align: center;
   font-size: 75px;
   margin: 0%;
 }
 h2 {
-  font-family: "Bakbak One", sans-serif;
+  font-family: "Share Tech Mono", monospace;
+  color: #FFE81F; /* Star Wars yellow */
   text-align: center;
   font-size: 44px;
     margin: 0%;
 }
 .joke-button {
+  font-family: "Share Tech Mono", monospace;
   font-size: 24px;
   font-weight: 350;
   border-radius: 8px;
@@ -40,5 +45,58 @@ h2 {
   color: white;
 }
 .joke {
+  font-family: "Share Tech Mono", monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border: 2px solid #FFE81F;
+  border-radius: 12px;
+  font-size: 24px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 232, 31, 0.8);
+}
+.custom-joke, #joke-button, #another-joke {
+  display: none;
+  font-family: "Share Tech Mono", monospace;
+}
+
+#joke {
   padding: 50px;
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+  font-family: "Share Tech Mono", monospace;
+}
+/* Lightsaber loader wrapper */
+#lightsaber-loader {
+  display: none;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.lightsaber {
+  width: 200px;
+  height: 6px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+
+.lightsaber::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+  animation: ignite 1.2s linear infinite;
+}
+
+@keyframes ignite {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
 }
